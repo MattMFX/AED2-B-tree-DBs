@@ -1,0 +1,12 @@
+integration:
+  dbtree:
+    db1:
+      url: http://db_tree_1:8080
+      endpoint:
+        search: /data/
+    db2:
+      url: http://db_tree_2:8080
+    db3:
+      url: http://db_tree_3:8080
+    db4:
+      url: http://db_tree_4:8080

@@ -1,0 +1,78 @@
+version: '3'
+
+services:
+  java_container:
+    image: openjdk:11-alpine
+    container_name: java_container
+    networks:
+      - my_network
+    working_dir: /app
+    command: ["java", "-jar", "your-java-application.jar"]
+    expose:
+      - "8080"
+    volumes:
+      - ./your-java-application.jar:/app/your-java-application.jar
+    deploy:
+      resources:
+        limits:
+          memory: 100M
+
+  python_container_1:
+    image: python:3.8-alpine
+    container_name: db_tree_1
+    networks:
+      - my_network
+    working_dir: /app
+    command: ["python", "your-python-script.py"]
+    volumes:
+      - ./your-python-script.py:/app/your-python-script.py
+    deploy:
+      resources:
+        limits:
+          memory: 100M
+
+  python_container_2:
+    image: python:3.8-alpine
+    container_name: db_tree_2
+    networks:
+      - my_network
+    working_dir: /app
+    command: [ "python", "your-python-script.py" ]
+    volumes:
+      - ./your-python-script.py:/app/your-python-script.py
+    deploy:
+      resources:
+        limits:
+          memory: 100M
+
+  python_container_3:
+    image: python:3.8-alpine
+    container_name: db_tree_3
+    networks:
+      - my_network
+    working_dir: /app
+    command: [ "python", "your-python-script.py" ]
+    volumes:
+      - ./your-python-script.py:/app/your-python-script.py
+    deploy:
+      resources:
+        limits:
+          memory: 100M
+
+  python_container_4:
+    image: python:3.8-alpine
+    container_name: db_tree_4
+    networks:
+      - my_network
+    working_dir: /app
+    command: [ "python", "your-python-script.py" ]
+    volumes:
+      - ./your-python-script.py:/app/your-python-script.py
+    deploy:
+      resources:
+        limits:
+          memory: 100M
+
+networks:
+  my_network:
+    driver: bridge
