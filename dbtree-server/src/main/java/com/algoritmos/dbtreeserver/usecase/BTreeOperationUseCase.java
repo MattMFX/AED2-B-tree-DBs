@@ -1,7 +1,11 @@
 package com.algoritmos.dbtreeserver.usecase;
 
+import com.algoritmos.dbtreeserver.domain.Book;
+
+import java.io.IOException;
+
 public interface BTreeOperationUseCase {
-    String insert(Object data);
-    String search(String id);
-    String delete(String id);
+    void insert(Book book);
+    Book search(String id);
+    void delete(String id);
 }

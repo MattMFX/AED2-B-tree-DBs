@@ -2,76 +2,64 @@ version: '3'
 
 services:
   java_container:
-    image: openjdk:11-alpine
+    image: openjdk:17-oracle
     container_name: java_container
     networks:
       - my_network
     working_dir: /app
-    command: ["java", "-jar", "your-java-application.jar"]
-    expose:
-      - "8080"
+    command: ["java", "-Xmx100m", "-jar", "/app/your-java-app.jar"]
+    ports:
+      - "8080:8080"
     volumes:
-      - ./your-java-application.jar:/app/your-java-application.jar
-    deploy:
-      resources:
-        limits:
-          memory: 100M
+      - ./dbtree-client-0.0.1-SNAPSHOT-plain.jar:/app/your-java-application.jar
 
-  python_container_1:
-    image: python:3.8-alpine
-    container_name: db_tree_1
+  dbtree1:
+    image: openjdk:17-oracle
+    container_name: dbtree1
     networks:
       - my_network
     working_dir: /app
-    command: ["python", "your-python-script.py"]
+    command: ["java", "-Xmx100m", "-jar", "/app/dbtree-server-0.0.1-SNAPSHOT-plain.jar"]
+    ports:
+      - "3210:3210"
     volumes:
-      - ./your-python-script.py:/app/your-python-script.py
-    deploy:
-      resources:
-        limits:
-          memory: 100M
+      - ./dbtree-server-0.0.1-SNAPSHOT-plain.jar:/app/dbtree-server-0.0.1-SNAPSHOT-plain.jar
 
-  python_container_2:
-    image: python:3.8-alpine
-    container_name: db_tree_2
+  dbtree2:
+    image: openjdk:17-oracle
+    container_name: dbtree2
     networks:
       - my_network
     working_dir: /app
-    command: [ "python", "your-python-script.py" ]
+    command: ["java", "-Xmx100m", "-jar", "/app/dbtree-server-0.0.1-SNAPSHOT-plain.jar"]
+    ports:
+      - "3211:3210"
     volumes:
-      - ./your-python-script.py:/app/your-python-script.py
-    deploy:
-      resources:
-        limits:
-          memory: 100M
+      - ./dbtree-server-0.0.1-SNAPSHOT-plain.jar:/app/dbtree-server-0.0.1-SNAPSHOT-plain.jar
 
-  python_container_3:
-    image: python:3.8-alpine
-    container_name: db_tree_3
+  dbtree3:
+    image: openjdk:17-oracle
+    container_name: dbtree3
     networks:
       - my_network
     working_dir: /app
-    command: [ "python", "your-python-script.py" ]
+    command: ["java", "-Xmx100m", "-jar", "/app/dbtree-server-0.0.1-SNAPSHOT-plain.jar"]
+    ports:
+      - "3212:3210"
     volumes:
-      - ./your-python-script.py:/app/your-python-script.py
-    deploy:
-      resources:
-        limits:
-          memory: 100M
+      - ./dbtree-server-0.0.1-SNAPSHOT-plain.jar:/app/dbtree-server-0.0.1-SNAPSHOT-plain.jar
 
-  python_container_4:
-    image: python:3.8-alpine
-    container_name: db_tree_4
+  dbtree4:
+    image: openjdk:17-oracle
+    container_name: dbtree4
     networks:
       - my_network
     working_dir: /app
-    command: [ "python", "your-python-script.py" ]
+    command: ["java", "-Xmx100m", "-jar", "/app/dbtree-server-0.0.1-SNAPSHOT-plain.jar"]
+    ports:
+      - "3213:3210"
     volumes:
-      - ./your-python-script.py:/app/your-python-script.py
-    deploy:
-      resources:
-        limits:
-          memory: 100M
+      - ./dbtree-server-0.0.1-SNAPSHOT-plain.jar:/app/dbtree-server-0.0.1-SNAPSHOT-plain.jar
 
 networks:
   my_network:

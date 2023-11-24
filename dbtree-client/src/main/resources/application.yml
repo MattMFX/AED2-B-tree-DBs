@@ -1,12 +1,13 @@
+server:
+  port: 8080
+
 integration:
   dbtree:
     db1:
-      url: http://db_tree_1:8080
-      endpoint:
-        search: /data/
+      url: http://dbtree1:3333
     db2:
-      url: http://db_tree_2:8080
+      url: http://dbtree2:3333
     db3:
-      url: http://db_tree_3:8080
+      url: http://dbtree3:3333
     db4:
-      url: http://db_tree_4:8080
+      url: http://dbtree4:3333
